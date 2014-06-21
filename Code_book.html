@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Code Book</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Code Book</h1>
+
+<p>Source of the original data: (<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a>) .</p>
+
+<p>Original description: <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a></p>
+
+<p>The attached R script (run_analysis.R) performs the following to clean up the data:</p>
+
+<ol>
+<li>Merges the training and test sets to create one data set, namely</li>
+</ol>
+
+<p>train/X_train.txt with test/X_test.txt &ndash; the result is a 10299 x 561 data frame, as in the original description (&ldquo;Number of Instances: 10299&rdquo; and &ldquo;Number of Attributes: 561&rdquo;)</p>
+
+<p>train/subject_train.txt with test/subject_test.txt &ndash; the result is a 10299 x 1 data frame with subject IDs,</p>
+
+<p>train/y_train.txt with test/y_test.txt &ndash; the result is also a 10299 x 1 data frame with activity IDs.</p>
+
+<ol>
+<li>Reads file features.txt and extracts only the measurements on the mean and standard deviation for each measurement.</li>
+</ol>
+
+<p>The result is a 10299 x 66 data frame, because only 66 out of 561 attributes are measurements on the mean and standard deviation. All measurements appear to be floating point numbers in the range (-1, 1).</p>
+
+<ol>
+<li>Reads activity_labels.txt and applies descriptive activity names to name the activities in the data set:</li>
+</ol>
+
+<p>walking</p>
+
+<p>walkingupstairs</p>
+
+<p>walkingdownstairs</p>
+
+<p>sitting</p>
+
+<p>standing</p>
+
+<p>laying</p>
+
+<ol>
+<li>The script also appropriately labels the data set with descriptive names: all feature names (attributes) and activity names are converted to lower case, underscores and brackets () are removed.</li>
+</ol>
+
+<p>Then it merges the 10299x66 data frame containing features with 10299x1 data frames containing activity labels and subject IDs.</p>
+
+<p>The result is saved as merged_clean_data.txt, a 10299x68 data frame such that the first column contains subject IDs, the second column activity names, and the last 66 columns are measurements. Subject IDs are integers between 1 and 30 inclusive. Names of the attributes are similar to the following:</p>
+
+<p>tbodyacc-mean-x</p>
+
+<p>tbodyacc-mean-y</p>
+
+<p>tbodyacc-mean-z</p>
+
+<p>tbodyacc-std-x</p>
+
+<p>tbodyacc-std-y</p>
+
+<p>tbodyacc-std-z</p>
+
+<p>tgravityacc-mean-x</p>
+
+<p>tgravityacc-mean-y</p>
+
+<ol>
+<li>Finally, the script creates a 2nd, independent tidy data set with the average of each measurement for each activity and each subject.</li>
+</ol>
+
+<p>The result is saved as data_set_with_the_averages.txt, a 180x68 data frame, where as before, the first column contains subject IDs, the second column contains activity names (see below), and then the averages for each of the 66 attributes are in columns 3&hellip;68. There are 30 subjects and 6 activities, thus 180 rows in this data set with averages.</p>
+
+</body>
+
+</html>
+
