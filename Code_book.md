@@ -7,13 +7,13 @@ Original description: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Reco
 
 The dataset includes the following files:
 
-- 'README.txt'
+-'README.txt'
 
-- 'features_info.txt': Shows information about the variables used on the feature vector.
+-'features_info.txt': Shows information about the variables used on the feature vector.
 
 - 'features.txt': List of all features.
 
-- 'activity_labels.txt': Links the class labels with their activity name.
+-'activity_labels.txt': Links the class labels with their activity name.
 
 - 'train/X_train.txt': Training set.
 
@@ -27,9 +27,11 @@ The R script **run_analysis.R** performs the following:
 
 1. Merges the training and test sets to create one data set
 
-X_test.txt + X_train.txt  results in dataset Xdata (10299 x 561) 
-y_test.txt + y_train.txt  results in dataset Ydata (10299 x 1) with activity IDs.
-subject_test.txt  results in dataset Subject (10299 x 1) data frame with subject IDs,
+  X_test.txt + X_train.txt  results in dataset Xdata (10299 x 561) 
+
+  y_test.txt + y_train.txt  results in dataset Ydata (10299 x 1) with activity IDs.
+
+  subject_test.txt  results in dataset Subject (10299 x 1) data frame with subject IDs,
 
 
 2. Reads file features.txt and extracts only the measurements on the mean and standard deviation for each measurement.
@@ -64,22 +66,39 @@ These signals were used to estimate variables of the feature vector for each pat
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 tBodyAcc-XYZ
+
 tGravityAcc-XYZ
+
 tBodyAccJerk-XYZ
+
 tBodyGyro-XYZ
+
 tBodyGyroJerk-XYZ
+
 tBodyAccMag
+
 tGravityAccMag
+
 tBodyAccJerkMag
+
 tBodyGyroMag
+
 tBodyGyroJerkMag
+
 fBodyAcc-XYZ
+
 fBodyAccJerk-XYZ
+
 fBodyGyro-XYZ
+
 fBodyAccMag
+
 fBodyAccJerkMag
+
 fBodyGyroMag
+
 fBodyGyroJerkMag
+
 
 5. Finally, the script creates a 2nd, independent tidy data set with the average of each measurement for each activity and each subject.
 
