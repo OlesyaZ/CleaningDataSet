@@ -25,7 +25,7 @@ The dataset includes the following files:
 
 The R script **run_analysis.R** performs the following:
 
-#Merges the training and test sets to create one data set
+###Merges the training and test sets to create one data set
 
   X_test.txt + X_train.txt  results in dataset Xdata (10299 x 561) 
 
@@ -33,11 +33,11 @@ The R script **run_analysis.R** performs the following:
 
   subject_test.txt  results in dataset Subject (10299 x 1) data frame with subject IDs,
 
-# Reads file features.txt and extracts only the measurements on the mean and standard deviation for each measurement.
+### Reads file features.txt and extracts only the measurements on the mean and standard deviation for each measurement.
 
 The result is Xdata(10299 x 66),  66 out of 561 attributes are measurements on the mean and standard deviation. 
 
-## Reads activity_labels.txt and applies descriptive activity names to name the activities in the data set:
+### Reads activity_labels.txt and applies descriptive activity names to name the activities in the data set:
 
 walking
 
@@ -98,7 +98,7 @@ fBodyGyroMag
 
 fBodyGyroJerkMag
 
-# the script creates a 2nd, independent tidy data set with the average of each measurement for each activity and each subject.
+### the script creates a 2nd, independent tidy data set with the average of each measurement for each activity and each subject.
 
 The result is saved as dresult.txt, a 180x68 data frame, where as before, the first column contains subject IDs, the second column contains activity names (see below), and then the averages for each of the 66 attributes are in columns. There are 30 subjects and 6 activities, thus 180 rows in this data set with averages.
 
